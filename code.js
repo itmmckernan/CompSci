@@ -159,7 +159,7 @@ function drawAllBallons(meanX, meanY, chimneyX, chimneyY, numBallons) {
 	while(radius>50){
   	coordX = randomGaussian(meanX, sdX);
   	coordY = randomGaussian(meanY, sdY);
-  	radius = Math.sqrt(Math.pow((coordX-meanX),2)+Math.pow((coordY-meanY), 2));
+	radius = distance(meanX, meanY, coordX, coordY);
   }
   drawBallon(coordX, coordY, chimneyX, chimneyY, randomGaussian(4, 1), radius, meanX, meanY);
   }
@@ -180,6 +180,9 @@ function drawBallon(x, y, chimneyX, chimneyY, size, radius, meanX, meanY) {
   }
   dot(size);
   penUp();
+}
+function distance(pt1X, pt1Y, pt2X, pt2y) {
+  return Math.sqrt(Math.pow((pt2x-pt1X),2)+Math.pow((pt2y-pt1Y), 2));
 }
 function randomGaussian(m, sd) {
   return m + 2*sd*(Math.random() + Math.random() + Math.random() - 1.5);
@@ -330,30 +333,27 @@ function allBirds() {
 }
 //New Sun Model
 function drawSun() {
-  penUp();
-  moveTo(320, 0);
-  penColor("yellow");
-  dot(63);
-  
-  //penColor("orange");
-  //dot(50);
-  for(var i = 0; i < 50; i++){
-    var fadeCoeffG = 2;
-    penRGB(255, 180-fadeCoeffG*i, 0);
-    dot(50-i);
+  penUp(); //should start out with penUp, but just to be safe we do it again
+  moveTo(320, 0); //moves to the upper right corner cause thats where the sun is
+  penColor("yellow");// starts out with yellow
+  dot(63); //makes the biggest dot
+  for(var i = 0; i < 50; i++){ // starts drawing the outer sun first then slowly makes the inner suns
+    var fadeCoeffG = 2; //how quickly the green fades away per iteration of the for loop so that it can transition into red in the middle from orange
+    penRGB(255, 180-fadeCoeffG*i, 0); //sets the pen color and tranisitions into red for the middle
+    dot(50-i); //smaller dot every iteration of the for loop
   }
-  turnTo(0);
-  penWidth(7);
-  turnLeft(90);
-  moveForward(65);
-  turnTo(45);
-  penDown();
-  penColor("yellow");
+  turnTo(0); //points up
+  penWidth(7); //the pen gets bigger to make the sun rays
+  turnLeft(90); //turns left to start
+  moveForward(65); // gets into starting position
+  turnTo(45); //turns again
+  penDown(); // puts the pen down
+  penColor("yellow"); // pen color yellow
   for (var j = 0; j < 18; j++) {
-    arcLeft(70, 20);
+    arcLeft(70, 20); // draws the arcs of the sun
     turnLeft(270);
   }
-  penUp();
+  penUp(); //pulls the pen up in the end
 }
 
 //Clouds
