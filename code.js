@@ -20,7 +20,14 @@ drawSun(50);
 allBalloons();
 allWind();
 allBirds();
+drawSmith(houseX+34, houseY-72);
 //Backround
+function drawSmith(x, y) {
+  createCanvas("canvas1", 15, 22);
+  setPosition("canvas1", x, y);
+  drawImageURL("smith.png");
+}
+
 function drawBackground(canvasWidth, canvasHeight) {
   penUp();
   turnTo(90);
