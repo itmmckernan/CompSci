@@ -48,15 +48,16 @@ function drawBackground(canvasWidth, canvasHeight) {
   }
   turnTo(0);
 }
-//Draw House
+//Draw House - Nathan Melcher
 function drawHouse(x,y){
 //Location/Color
   penUp();
   moveTo(x,y);
   penDown();
   penColor("black");
-//Base
-  moveForward(50);
+//Base 
+//draws the foundation for the house
+  moveForward(50); 
   turnRight(45);
   moveForward(60);
   turnRight();
@@ -86,6 +87,7 @@ function drawHouse(x,y){
   penDown();
   moveForward(35.5);
 //Trim
+// draws the boarder to the house
   turnRight();
   moveForward(50);
   turnLeft(135);
@@ -125,6 +127,7 @@ function drawHouse(x,y){
   penDown();
   drawWindow(15);
   //chimney
+//draws the chimney
   penUp();
   moveForward(39);
   penDown();
