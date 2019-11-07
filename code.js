@@ -17,6 +17,7 @@ drawHouse(houseX, houseY);
 drawAllTrees();
 drawAllBallons(houseX+63, houseY-200, houseX+63, houseY-105, 500);
 drawSun(50);
+//drawSun();
 allBalloons();
 allWind();
 allBirds();
@@ -318,4 +319,27 @@ function allBirds() {
     turnTo(randomNumber(120, 270));
     moveForward(50);
   }
+}
+//New Sun Model
+function drawSun() {
+  moveTo(320, 0);
+  penColor("yellow");
+  dot(63);
+  
+  penColor("orange");
+  dot(50);
+  turnTo(0);
+  penWidth(7);
+  turnLeft(90);
+  moveForward(65);
+  turnTo(45);
+  penDown();
+  penColor("yellow");
+  for (var i = 0; i < 18; i++) {
+    arcLeft(70, 20);
+    turnLeft(270);
+    
+  }
+  
+  
 }
