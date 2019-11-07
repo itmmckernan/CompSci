@@ -322,12 +322,18 @@ function allBirds() {
 }
 //New Sun Model
 function drawSun() {
+  penUp();
   moveTo(320, 0);
   penColor("yellow");
   dot(63);
   
-  penColor("orange");
-  dot(50);
+  //penColor("orange");
+  //dot(50);
+  for(var i = 0; i < 50; i++){
+    var fadeCoeffG = 2;
+    penRGB(255, 180-fadeCoeffG*i, 0);
+    dot(50-i);
+  }
   turnTo(0);
   penWidth(7);
   turnLeft(90);
@@ -335,11 +341,9 @@ function drawSun() {
   turnTo(45);
   penDown();
   penColor("yellow");
-  for (var i = 0; i < 18; i++) {
+  for (var j = 0; j < 18; j++) {
     arcLeft(70, 20);
     turnLeft(270);
-    
   }
   penUp();
-  
 }
