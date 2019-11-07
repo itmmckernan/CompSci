@@ -277,7 +277,7 @@ function allWind() {
 }
 //Model of Wind
 function drawWind(size) {
-  moveTo(randomNumber(30, 150), randomNumber(245,380));
+  moveTo(randomNumber(10,130), randomNumber(245,380));
   penWidth(1);
   penDown();
   penRGB(171, 171, 171, 0.75);
