@@ -182,7 +182,7 @@ function drawBallon(x, y, chimneyX, chimneyY, size, radius, meanX, meanY) {
   penUp();
 }
 function distance(pt1X, pt1Y, pt2X, pt2y) {
-  return Math.sqrt(Math.pow((pt2x-pt1X),2)+Math.pow((pt2y-pt1Y), 2));
+  return Math.sqrt(Math.pow((pt2X-pt1X),2)+Math.pow((pt2y-pt1Y), 2));
 }
 function randomGaussian(m, sd) {
   return m + 2*sd*(Math.random() + Math.random() + Math.random() - 1.5);
