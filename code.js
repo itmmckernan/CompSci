@@ -340,6 +340,6 @@ function drawSun() {
     turnLeft(270);
     
   }
-  
+  penUp();
   
 }
