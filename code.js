@@ -28,6 +28,23 @@ function drawSmith(x, y) {
   drawImageURL("smith.png");
 }
 
+function colorInHouse(houseX, houseY) {
+  var exclusionZones = [
+	  [[houseX+0, HouseY+0], [houseX+0, HouseY+0]], //Window 1
+	  [[houseX+0, HouseY+0], [houseX+0, HouseY+0]],//Window 2
+	  [[houseX+0, HouseY+0], [houseX+0, HouseY+0]], //Window 3
+	  [[houseX+0, HouseY+0], [houseX+0, HouseY+0]] //Door
+	  ]
+  
+  var innerHousePoly = [
+	  [houseX, HouseY], // lower left corner
+	  [houseX, HouseY-100], //left corner of the A frame roof
+	  [houseX+100, houseY-150], //peak of the roof
+	  [houseX+100, houseY-100], //right corner of the A frame
+	  [houseX+100, houseY] //lower left corner of the house
+	  ]
+  
+  }
 function drawBackground(canvasWidth, canvasHeight) {
   penUp();
   turnTo(90);
@@ -160,10 +177,11 @@ function drawBallon(x, y, chimneyX, chimneyY, size, radius, meanX, meanY) {
   }
   var contrast = 1.1;
   moveTo(x, y);
+  var neonColorPos = randomNumber(0, neonColors.length-1);
   if((x-meanX)>(y-meanY)){
-	  penRGB(Math.min(neonColors[randomNumber(0, neonColors.length-1)][0]+Math.pow(radius, contrast), 255), Math.min(neonColors[randomNumber(0, neonColors.length-1)][1]+Math.pow(radius, contrast), 255), Math.min(neonColors[randomNumber(0, neonColors.length-1)][2]+Math.pow(radius, contrast), 255), size/8);
+	  penRGB(Math.min(neonColors[neonColorPos][0]+Math.pow(radius, contrast), 255), Math.min(neonColors[neonColorPos][1]+Math.pow(radius, contrast), 255), Math.min(neonColors[neonColorPos][2]+Math.pow(radius, contrast), 255), size/8);
   } else {
-	  penRGB(Math.max(neonColors[randomNumber(0, neonColors.length-1)][0]-Math.pow(radius, contrast), 0), Math.max(neonColors[randomNumber(0, neonColors.length-1)][1]-Math.pow(radius, contrast), 0), Math.max(neonColors[randomNumber(0, neonColors.length-1)][2]-Math.pow(radius, contrast), 0), size/8);
+	  penRGB(Math.max(neonColors[neonColorPos][0]-Math.pow(radius, contrast), 0), Math.max(neonColors[neonColorPos)][1]-Math.pow(radius, contrast), 0), Math.max(neonColors[neonColorPos][2]-Math.pow(radius, contrast), 0), size/8);
   }
   dot(size);
   penUp();
