@@ -28,23 +28,7 @@ function drawSmith(x, y) {
   drawImageURL("smith.png");
 }
 
-function colorInHouse(houseX, houseY) {
-  var exclusionZones = [
-	  [[houseX+0, houseY+0], [houseX+0, houseY+0]], //Window 1
-	  [[houseX+0, houseY+0], [houseX+0, houseY+0]],//Window 2
-	  [[houseX+0, houseY+0], [houseX+0, houseY+0]], //Window 3
-	  [[houseX+0, houseY+0], [houseX+0, houseY+0]] //Door
-	  ]
-  
-  var innerHousePoly = [
-	  [houseX, houseY], // lower left corner
-	  [houseX, houseY-100], //left corner of the A frame roof
-	  [houseX+100, houseY-150], //peak of the roof
-	  [houseX+100, houseY-100], //right corner of the A frame
-	  [houseX+100, houseY] //lower left corner of the house
-	  ]
-  
-  }
+
 function linesCross(l1ptAx, l1ptAy, l1ptBx, l1ptBy, l2ptAx, l2ptAy, l2ptBx, l2ptBy) {
 	var intersectionX;
 	var intersectionY;
