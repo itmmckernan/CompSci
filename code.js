@@ -9,7 +9,7 @@ var neonColors = [
 ];
 var canvasWidth = 320;
 var canvasHeight = 450;
-var houseX = randomNumber(150,200);
+var houseX = randomNumber(170,200);
 var houseY = randomNumber(300,400);
 //Final Functions
 drawBackground(canvasWidth, canvasHeight);
