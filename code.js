@@ -253,7 +253,7 @@ function drawAllTrees() {
 for (var i = 0; i <10; i++){
   tree(randomNumber(10, 15));
 }
-for(var i = 0; i < 10; i++) {
+for(var j = 0; j < 10; j++) {
   treeTop(randomNumber(10, 15));
   moveTo(randomNumber(0, 320), 450);
 }
