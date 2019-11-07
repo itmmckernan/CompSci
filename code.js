@@ -27,7 +27,7 @@ drawSmith(houseX+34, houseY-72);
 function drawSmith(x, y) {
   createCanvas("canvas1", 15, 22);
   setPosition("canvas1", x, y);
-  drawImageURL("smith.png");
+  drawImageURL("https://github.com/itmmckernan/CompSci/blob/master/smith.png?raw=true");
 }
 
 //Backround
