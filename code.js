@@ -25,6 +25,7 @@ allBalloons();
 allWind();
 allBirds();
 drawSmith(houseX+34, houseY-72);
+drawAllClouds(randomNumber(5, 8));
 
 //BEGIN FUNCTIONS
 
@@ -353,4 +354,30 @@ function drawSun() {
     turnLeft(270);
   }
   penUp();
+}
+
+//Clouds
+
+function drawCloud(size){
+  penUp();
+  moveTo(randomNumber(30, 320), randomNumber(50, 20));
+  penRGB(randomNumber(220, 233), randomNumber(230, 237), randomNumber(245, 245), 0.8);
+  dot(size);
+  moveForward(size);
+  turnRight(90);
+  moveForward(2.5);
+  dot(1.25 * size);
+  turnLeft(90);
+  moveForward(size);
+  turnLeft(90);
+  moveForward(2.5);
+  dot(size);
+  penUp();
+}
+
+function drawAllClouds(cloudNum){
+  for (var i = 0; i < cloudNum; i++) {
+  drawCloud(randomNumber(12.5, 20));
+  turnTo(270);
+  }
 }
