@@ -273,7 +273,8 @@ function drawBalloons(size) {
   moveTo(randomNumber(30, 290), randomNumber(10, 100));
   penWidth(1.5);
   penDown();
-  penRGB(neonColors[randomNumber(0, neonColors.length-1)][0], neonColors[randomNumber(0, neonColors.length-1)][1], neonColors[randomNumber(0, neonColors.length-1)][2], 0.75);
+  var neonColorPos = randomNumber(0, neonColors.length-1);
+  penRGB(neonColors[neonColorPos][0], neonColors[neonColorPos][1], neonColors[neonColorPos][2], 0.75);
   turnTo(randomNumber(-30, 30));
   dot(size-1);
   penUp();
