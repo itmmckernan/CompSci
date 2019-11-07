@@ -181,7 +181,7 @@ function drawBallon(x, y, chimneyX, chimneyY, size, radius, meanX, meanY) {
   if((x-meanX)>(y-meanY)){
 	  penRGB(Math.min(neonColors[neonColorPos][0]+Math.pow(radius, contrast), 255), Math.min(neonColors[neonColorPos][1]+Math.pow(radius, contrast), 255), Math.min(neonColors[neonColorPos][2]+Math.pow(radius, contrast), 255), size/8);
   } else {
-	  penRGB(Math.max(neonColors[neonColorPos][0]-Math.pow(radius, contrast), 0), Math.max(neonColors[neonColorPos)][1]-Math.pow(radius, contrast), 0), Math.max(neonColors[neonColorPos][2]-Math.pow(radius, contrast), 0), size/8);
+	  penRGB(Math.max(neonColors[neonColorPos][0]-Math.pow(radius, contrast), 0), Math.max(neonColors[neonColorPos][1]-Math.pow(radius, contrast), 0), Math.max(neonColors[neonColorPos][2]-Math.pow(radius, contrast), 0), size/8);
   }
   dot(size);
   penUp();
