@@ -1,5 +1,5 @@
-//Variables
 hide();
+//Variables
 var neonColors = [
   [77,238,234],
   [116,238,21],
@@ -11,7 +11,6 @@ var canvasWidth = 320;
 var canvasHeight = 450;
 var houseX = randomNumber(150,200);
 var houseY = randomNumber(300,400);
-
 //Final Functions
 drawBackground(canvasWidth, canvasHeight);
 drawHouse(houseX, houseY);
@@ -21,7 +20,6 @@ drawSun(50);
 allBalloons();
 allWind();
 allBirds();
-
 //Backround
 function drawBackground(canvasWidth, canvasHeight) {
   penUp();
@@ -35,16 +33,13 @@ function drawBackground(canvasWidth, canvasHeight) {
   }
   turnTo(0);
 }
-
 //Draw House
 function drawHouse(x,y){
-  
 //Location/Color
   penUp();
   moveTo(x,y);
   penDown();
   penColor("black");
-  
 //Base
   moveForward(50);
   turnRight(45);
@@ -75,7 +70,6 @@ function drawHouse(x,y){
   turnLeft();
   penDown();
   moveForward(35.5);
-  
 //Trim
   turnRight();
   moveForward(50);
@@ -95,7 +89,6 @@ function drawHouse(x,y){
   turnLeft(45);
   moveForward(52.5);
   turnRight();
-  
   //windows
   penDown();
   drawWindow(20);
@@ -116,7 +109,6 @@ function drawHouse(x,y){
   moveForward(20);
   penDown();
   drawWindow(15);
-  
   //chimney
   penUp();
   moveForward(39);
@@ -137,7 +129,6 @@ function drawHouse(x,y){
   turnRight();
   moveForward(2);
 }
-
 //ballons
 function drawAllBallons(meanX, meanY, chimneyX, chimneyY, numBallons) {
   var sdX = 40;
@@ -194,7 +185,6 @@ for (var i = 0; i < 4; i++) {
   turnRight();
   }  
 }
-
 //sun rays
 function drawAllRays(){
   Ray(randomNumber(75,100));
@@ -209,7 +199,6 @@ function Ray(length){
   moveForward(length);
   penUp();
 }
-
 //sun
 function drawSun(size){
   penUp();
@@ -225,7 +214,6 @@ moveTo(300,20);
   dot(0.5 * size);
   penUp();
 }
-
 //tree tops
 moveTo(0, 450);
 function treeTop(size){
@@ -261,14 +249,12 @@ for(var i = 0; i < 10; i++) {
   moveTo(randomNumber(0, 320), 450);
 }
 }
-
 //Applying all balloons
 function allBalloons() {
   for (var i = 0; i < 8; i++) {
     drawBalloons(randomNumber(2, 5));
   }
 }
-
 //Model of Balloons
 function drawBalloons(size) {
   moveTo(randomNumber(30, 290), randomNumber(10, 100));
@@ -283,16 +269,13 @@ function drawBalloons(size) {
   dot(size+0.5);
   penUp();
 }
-
 //Applying all Wind
 function allWind() {
   for (var i = 0; i < 5; i++) {
     drawWind(randomNumber(5, 10));
   }
 }
-
 //Model of Wind
-
 function drawWind(size) {
   moveTo(randomNumber(30, 150), randomNumber(245,380));
   penWidth(1);
@@ -304,7 +287,6 @@ function drawWind(size) {
   arcLeft(180, size/2);
   penUp();
 }
-
 //Model of Birds
 function drawBirds() {
   penWidth(2);
@@ -317,7 +299,6 @@ function drawBirds() {
   arcRight(120, 5);
   penUp();
 }
-
 //Applying all Birds
 function allBirds() {
   moveTo(randomNumber(30, 100), randomNumber(50,125));for (var i = 0; i < 3; i++) {
