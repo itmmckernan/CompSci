@@ -30,21 +30,39 @@ function drawSmith(x, y) {
 
 function colorInHouse(houseX, houseY) {
   var exclusionZones = [
-	  [[houseX+0, HouseY+0], [houseX+0, HouseY+0]], //Window 1
-	  [[houseX+0, HouseY+0], [houseX+0, HouseY+0]],//Window 2
-	  [[houseX+0, HouseY+0], [houseX+0, HouseY+0]], //Window 3
-	  [[houseX+0, HouseY+0], [houseX+0, HouseY+0]] //Door
+	  [[houseX+0, houseY+0], [houseX+0, houseY+0]], //Window 1
+	  [[houseX+0, houseY+0], [houseX+0, houseY+0]],//Window 2
+	  [[houseX+0, houseY+0], [houseX+0, houseY+0]], //Window 3
+	  [[houseX+0, houseY+0], [houseX+0, houseY+0]] //Door
 	  ]
   
   var innerHousePoly = [
-	  [houseX, HouseY], // lower left corner
-	  [houseX, HouseY-100], //left corner of the A frame roof
+	  [houseX, houseY], // lower left corner
+	  [houseX, houseY-100], //left corner of the A frame roof
 	  [houseX+100, houseY-150], //peak of the roof
 	  [houseX+100, houseY-100], //right corner of the A frame
 	  [houseX+100, houseY] //lower left corner of the house
 	  ]
   
   }
+function linesCross(l1ptAx, l1ptAy, l1ptBx, l1ptBy, l2ptAx, l2ptAy, l2ptBx, l2ptBy) {
+	var intersectionX;
+	var intersectionY;
+	
+	//find the equation of the lines
+	//start by finding the slope
+	var slopel1 = (l1ptBx - l1ptAx)/(l1ptBy - l1ptAy);
+	var slopel2 = (l2ptBx - l2ptAx)/(l2ptBy - l2ptAy);
+	//then the y intercepts of both
+	var yintl1 = l1ptAy/(slopel1/l1ptAx);
+	var yintl1 = l2ptAy/(slopel2/l2ptAx);
+	//find if the lines cross
+	
+	//find if the crossing point of the lines is inside or outiside of the range
+	
+	var intersections = [intersectionX, intersectionY];
+	return intersections;
+}	
 function drawBackground(canvasWidth, canvasHeight) {
   penUp();
   turnTo(90);
