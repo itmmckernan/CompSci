@@ -51,14 +51,103 @@ function drawBackground(canvasWidth, canvasHeight) {
 }
 //Draw House - Nathan Melcher
 function drawHouse(x,y){
-//Location/Color
   penUp();
   moveTo(x,y);
+//side panels 
+  moveTo(x+4, y-4.5);
   penDown();
+colorPanel();
+function colorPanel() {
+  turnTo(90);
+    //penRGB(252, 214, 124);
+    penRGB(219, 96, 96);
+    
+    penWidth(10);
+    moveForward(24);
+    turnLeft(90);
+    moveForward(5);
+    turnLeft(90);
+    moveForward(24);
+    turnRight(90);
+    moveForward(5);
+    turnRight(90);
+    moveForward(24);
+    turnLeft(90);
+    moveForward(25);
+    turnLeft(90);
+    moveForward(24);
+    turnLeft(90);
+    moveForward(25);
+    penUp();
+}
+moveTo(x+57, y-4);
+penDown();
+colorPanel();
+//rest of front
+moveTo(x+35, y-34);
+penDown();
+turnTo(90);
+moveForward(15);
+turnLeft(90);
+moveForward(5);
+turnLeft(90);
+moveForward(15);
+penUp();
+moveTo(x+5, y-47);
+dot(1);
+penDown();
+turnTo(90);
+moveForward(24);
+turnRight(90);
+moveForward(3);
+turnLeft(90);
+moveForward(26);
+turnLeft(90);
+moveForward(3);
+turnRight(90);
+moveForward(25);
+turnLeft(134);
+penWidth(9);
+moveForward(54);
+turnLeft(90);
+moveForward(25);
+moveForward(25);
+penUp();
+moveTo(x+18, y-55);
+  penDown();
+  turnTo(90);
+  moveForward(10);
+  turnLeft(90);
+  moveForward(10);
+  turnLeft(130);
+  moveForward(5);
+  penUp();
+  moveTo(x+57, y-55);
+  penDown();
+  turnTo(90);
+  moveForward(10);
+  turnLeft(140);
+  moveForward(13);
+  turnLeft(130);
+  moveForward(10);
+  turnRight(180);
+  moveForward(18);
+  penUp();
+  moveTo(x+40, y-75);
+  penDown();
+  turnTo(90);
+  moveForward(10);
+  moveBackward(18);
+  
+  
+  penUp();
+//Base
+  moveTo(x,y);
+  penDown();
+  turnTo(0);
+  penWidth(1);
   penColor("black");
-//Base 
-//draws the foundation for the house
-  moveForward(50); 
+  moveForward(50);
   turnRight(45);
   moveForward(60);
   turnRight();
@@ -88,7 +177,6 @@ function drawHouse(x,y){
   penDown();
   moveForward(35.5);
 //Trim
-// draws the boarder to the house
   turnRight();
   moveForward(50);
   turnLeft(135);
@@ -128,7 +216,6 @@ function drawHouse(x,y){
   penDown();
   drawWindow(15);
   //chimney
-//draws the chimney
   penUp();
   moveForward(39);
   penDown();
