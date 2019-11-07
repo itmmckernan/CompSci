@@ -29,24 +29,6 @@ function drawSmith(x, y) {
 }
 
 
-function linesCross(l1ptAx, l1ptAy, l1ptBx, l1ptBy, l2ptAx, l2ptAy, l2ptBx, l2ptBy) {
-	var intersectionX;
-	var intersectionY;
-	
-	//find the equation of the lines
-	//start by finding the slope
-	var slopel1 = (l1ptBx - l1ptAx)/(l1ptBy - l1ptAy);
-	var slopel2 = (l2ptBx - l2ptAx)/(l2ptBy - l2ptAy);
-	//then the y intercepts of both
-	var yintl1 = l1ptAy/(slopel1/l1ptAx);
-	var yintl1 = l2ptAy/(slopel2/l2ptAx);
-	//find if the lines cross
-	
-	//find if the crossing point of the lines is inside or outiside of the range
-	
-	var intersections = [intersectionX, intersectionY];
-	return intersections;
-}	
 function drawBackground(canvasWidth, canvasHeight) {
   penUp();
   turnTo(90);
