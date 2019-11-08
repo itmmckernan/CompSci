@@ -35,17 +35,26 @@ function drawSmith(x, y) {
   drawImageURL("https://github.com/itmmckernan/CompSci/blob/master/smith.png?raw=true");
 }
 
-//Backround
-
+//Background
+//Ian McKernan with a few ideas by Nathan Melcher
 function drawBackground(canvasWidth, canvasHeight) {
   penUp();
+  var step = 1;
+  var brightningCoeff = 1;
+  var rCoeff = 135/255;
+  var gCoeff = 206/255;
+  var bCoeff = 245/255;
   turnTo(90);
-  for(var i = 0; i < canvasHeight; i++) {
-	moveTo(0, i);
-	penRGB(135, 206, 245, 1-i/canvasHeight);
-	penDown();
-	moveForward(canvasWidth);
-	penUp();
+  for(var i =0; i < canvasHeight; i++){
+    moveTo(0, i);
+	  for(var j = 0; j < canvasWidth/step; j++) {
+      var brightnessCoeff = brightningCoeff*(canvasWidth-distance(getX(), getY(), canvasWidth, 0));
+	    penRGB(Math.max(Math.min(135+(rCoeff*brightnessCoeff), 255), 0), Math.max(Math.min(206+(gCoeff*brightnessCoeff), 255), 0), Math.max(Math.min(245+(bCoeff*brightnessCoeff), 255), 0), 1-i/canvasHeight);
+	    penDown();
+  	  moveForward(step);
+	    penUp();
+	  
+  }
   }
   turnTo(0);
 }
