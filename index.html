@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+<body>
+<div id='logo_div'></div>
+<script src="./canvas_turtle.packed.js" type="text/javascript"></script>
+<script>
+var l = new canvas_turtle("logo_div", {
+    //width of chart
+    width: 800,
+    //height of chart
+    height: 600,
+    //on error callback if canvas is unsupported
+    on_error: null,
+    //graphic for turtle (for debugging)
+    turtle: "./turtle.png"
+});
+for(var i = 0; i < 4; i++)
+{
+    l.draw(100);
+    l.right(90);
+}
+</script>
+</body>
+</html>
