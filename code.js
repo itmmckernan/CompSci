@@ -245,42 +245,42 @@ moveTo(x+18, y-55);
 }
 //ballons
 function drawAllBallons(meanX, meanY, chimneyX, chimneyY, numBallons) {
-  var sdX = 40;
-  var sdY = 60;
-  for(var i = 0; i < numBallons; i++){
-	var radius = 51;
-	var coordX;
-	var coordY;
+  var sdX = 40; //the standard deviation of the X values of the ballons
+  var sdY = 60; //the standard deviation of the Y values of the ballons
+  for(var i = 0; i < numBallons; i++){ //loops the number of times that we need to draw a ballon
+	var radius = 51; //the radius of the big clump of ballons
+	var coordX; //the x coordinate of ballon that will be drawn
+	var coordY; //the y coordinate of ballon that will be drawn
 	while(radius>50){
-  	coordX = randomGaussian(meanX, sdX);
-  	coordY = randomGaussian(meanY, sdY);
-	radius = distance(meanX, meanY, coordX, coordY);
+  	coordX = randomGaussian(meanX, sdX); //calls the randomGaussian function for the X value of the ballon
+  	coordY = randomGaussian(meanY, sdY); //calls the randomGaussian function for the y value of the ballon
+	radius = distance(meanX, meanY, coordX, coordY); //finds the distance of the two generated points from the center of the ballon clump
   }
-  drawBallon(coordX, coordY, chimneyX, chimneyY, randomGaussian(4, 1), radius, meanX, meanY);
+  drawBallon(coordX, coordY, chimneyX, chimneyY, randomGaussian(4, 1), radius, meanX, meanY); // calls the drawBallon fuction with the variables it has gotten. The Radius is called so that the ballons will have a mean of 4 with a standard deviation of 1.
   }
 }
 function drawBallon(x, y, chimneyX, chimneyY, size, radius, meanX, meanY) {
-  moveTo(chimneyX, chimneyY);
-  if(y-30 > meanY) {
-  penRGB(225, 225, 225, 0.01);
-  penDown();
+  moveTo(chimneyX, chimneyY); //moves to the correct stating position of the chimney passed in when its called
+  if(y-30 > meanY) { //this only runs the drawstring sequence if the ballon is towards the bottom of the pack of ballons
+  penRGB(225, 225, 225, 0.01); //sets the mostly-translucent grey color of the string
+  penDown();//puts the pen down so when it moves it draws the string
   }
-  var contrast = 1.1;
-  moveTo(x, y);
-  var neonColorPos = randomNumber(0, neonColors.length-1);
-  if((x-meanX)>(y-meanY)){
-	  penRGB(Math.min(neonColors[neonColorPos][0]+Math.pow(radius, contrast), 255), Math.min(neonColors[neonColorPos][1]+Math.pow(radius, contrast), 255), Math.min(neonColors[neonColorPos][2]+Math.pow(radius, contrast), 255), size/8);
-  } else {
-	  penRGB(Math.max(neonColors[neonColorPos][0]-Math.pow(radius, contrast), 0), Math.max(neonColors[neonColorPos][1]-Math.pow(radius, contrast), 0), Math.max(neonColors[neonColorPos][2]-Math.pow(radius, contrast), 0), size/8);
+  var contrast = 1.1; //the exponential value of the contrastning algorithm less than 1 is anti-shadow, more than 1 is more shadow
+  moveTo(x, y); //moves to where the position of the ballon is and draws the string
+  var neonColorPos = randomNumber(0, neonColors.length-1); //picks a random rgb triplet from the list so that we're able to add colors as we want and not have to change this code
+  if((x-meanX)>(y-meanY)){ // determines if the ballon is on the upper or lower side of the ballons, and picks the shading command accoridngly
+	  penRGB(Math.min(neonColors[neonColorPos][0]+Math.pow(radius, contrast), 255), Math.min(neonColors[neonColorPos][1]+Math.pow(radius, contrast), 255), Math.min(neonColors[neonColorPos][2]+Math.pow(radius, contrast), 255), size/8); //sets the pen color to what the random neon color is, adds highlight, then sees if that value is greater than 255. If it is it just returns 255 to avoid errors. This is done for each color channel of the ballon. Then the opacity of the colr is set based off the size of the ballon.
+  } else { // if the if statement is not true, then it runs this
+	  penRGB(Math.max(neonColors[neonColorPos][0]-Math.pow(radius, contrast), 0), Math.max(neonColors[neonColorPos][1]-Math.pow(radius, contrast), 0), Math.max(neonColors[neonColorPos][2]-Math.pow(radius, contrast), 0), size/8); //same as the line 2 lines above it, but instead of adding highlights it adds shadows
   }
-  dot(size);
-  penUp();
+  dot(size);//draws the actual balloon
+  penUp(); //end with this to not have random lines everywere
 }
 function distance(pt1X, pt1Y, pt2X, pt2y) {
-  return Math.sqrt(Math.pow((pt2X-pt1X),2)+Math.pow((pt2y-pt1Y), 2));
+  return Math.sqrt(Math.pow((pt2X-pt1X),2)+Math.pow((pt2y-pt1Y), 2)); //finds the distance between two points. Derived from Pythagorean theorem
 }
-function randomGaussian(m, sd) {
-  return m + 2*sd*(Math.random() + Math.random() + Math.random() - 1.5);
+function randomGaussian(m, sd) { //gets passed mean and standard deviation, as m and sd, respectively, and returns the Gaussian random
+  return m + 2*sd*(Math.random() + Math.random() + Math.random() - 1.5); //this is an approxiamtion of the box-muller transform. It's more than good enough for the project
 }
 function drawWindow(size){
   drawSquare(size);
