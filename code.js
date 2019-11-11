@@ -313,35 +313,6 @@ for (var i = 0; i < 4; i++) {
   turnRight();
   }  
 }
-/*//sun rays
-function drawAllRays(){
-  Ray(randomNumber(75,100));
-  turnTo(randomNumber(-80, -200));
-}
-function Ray(length){
-  penUp();
-  penWidth(randomNumber(1, 3));
-  moveTo(300, 20);
-  penDown();
-  penRGB(255, 224, 66, 0.5);
-  moveForward(length);
-  penUp();
-}
-//sun
-function drawSun(size){
-  penUp();
-  moveTo(300, 20);
-  for (var i = 0; i < 30; i++) {
-  drawAllRays();
-}
-turnTo(0);
-moveTo(300,20);
-  penRGB(255, 224, 66, 1);
-  dot(size);
-  penRGB(255, 201, 66, 0.2);
-  dot(0.5 * size);
-  penUp();
-}*/
 //tree tops
 moveTo(0, 450);
 function treeTop(size){
