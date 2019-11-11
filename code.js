@@ -1,6 +1,6 @@
 hide();
 //Variables
-var neonColors = [
+var neonColors = [ //this is a list of RGB values. Each line of 3 values is Red Green and Blue, respecively
   [77,238,234],
   [116,238,21],
   [255,231,0],
@@ -10,53 +10,52 @@ var neonColors = [
   [194, 76, 246],
   [0,30,255]
 ];
-var canvasWidth = 320;
+var canvasWidth = 320; //The size of the canvas so that the background function is adaptable to different canvas sizes
 var canvasHeight = 450;
-var houseX = randomNumber(170,200);
+var houseX = randomNumber(170,200); //sets the houseX and HouseY so that they can be called with offsets in other functions, such as drawballons
 var houseY = randomNumber(300,375);
 //Final Functions
-drawBackground(canvasWidth, canvasHeight);
+drawBackground(canvasWidth, canvasHeight); //draws the background
 drawHouse(houseX, houseY);
 drawAllTrees();
-drawAllBallons(houseX+63, houseY-200, houseX+63, houseY-105, 500);
-drawSun(50);
+drawAllBallons(houseX+63, houseY-200, houseX+63, houseY-105, 500); //draws the balloons with offsets. The first pair of X and Y is the center of the bunch of balloons, the second pair is the chimney posiiton, and the last value is the number of balloons.
+drawSun(50); //Draws the sun in the upper right corner with a size of 50
 //drawSun();
 allBalloons();
 allWind();
 allBirds();
-drawSmith(houseX+34, houseY-72);
+drawSmith(houseX+34, houseY-72); //puts an image of smith in one of the windows in the house
 drawAllClouds(randomNumber(2,4));
 
 //BEGIN FUNCTIONS
 
 function drawSmith(x, y) {
-  createCanvas("canvas1", 15, 22);
-  setPosition("canvas1", x, y);
-  drawImageURL("https://github.com/itmmckernan/CompSci/blob/master/smith.png?raw=true");
+  createCanvas("canvas1", 15, 22); //creates the canvas where the image will be put, with a size of 15x22
+  setPosition("canvas1", x, y); //moves the canvas into the right spot
+  drawImageURL("https://github.com/itmmckernan/CompSci/blob/master/smith.png?raw=true"); //pulls the image from the github, and puts it on the canvas
 }
 
 //Background
 //Ian McKernan with a few ideas by Nathan Melcher
 function drawBackground(canvasWidth, canvasHeight) {
-  penUp();
-  var step = 1;
-  var brightningCoeff = 1;
-  var rCoeff = 135/255;
-  var gCoeff = 206/255;
-  var bCoeff = 245/255;
+  penUp(); //always good to start with this so that there aren't random lines everywhere
+  var step = 1; //the step size that the turtle takes every time. Decrease the number (But not below 1) for more resolution, but slower drawing.
+  var brightningCoeff = 1; //change this to make the sun appear brighter or darker
+  var rCoeff = 135/255; //sky blue's red value divided by 255 so that it can be multiplied by the distance function later in this function
+  var gCoeff = 206/255; //sky blue's green value divided by 255 so that it can be multiplied by the distance function later in this function
+  var bCoeff = 245/255; //sky blue's blue value divided by 255 so that it can be multiplied by the distance function later in this function
   turnTo(90);
-  for(var i =0; i < canvasHeight; i++){
-    moveTo(0, i);
-	  for(var j = 0; j < canvasWidth/step; j++) {
-      var brightnessCoeff = brightningCoeff*(canvasWidth-distance(getX(), getY(), canvasWidth, 0));
-	    penRGB(Math.max(Math.min(135+(rCoeff*brightnessCoeff), 255), 0), Math.max(Math.min(206+(gCoeff*brightnessCoeff), 255), 0), Math.max(Math.min(245+(bCoeff*brightnessCoeff), 255), 0), 1-i/canvasHeight);
-	    penDown();
-  	  moveForward(step);
+  for(var i = 0; i < canvasHeight; i++){ //loops through the number of horizontal lines in the canvas
+    moveTo(0, i); //moves to the beginning of the line, with the line number being the iteration of the loop that it is on
+	  for(var j = 0; j < canvasWidth/step; j++) { //loops the number of times that there are pixels horizontally
+            var brightnessCoeff = brightningCoeff*(canvasWidth-distance(getX(), getY(), canvasWidth, 0)); //sets the brigtnessCoeff by taking the global brightining coeff and multipliing it by the distance away from the Sun in order to create a gradient brightness affect.
+	    penRGB(Math.max(Math.min(135+(rCoeff*brightnessCoeff), 255), 0), Math.max(Math.min(206+(gCoeff*brightnessCoeff), 255), 0), Math.max(Math.min(245+(bCoeff*brightnessCoeff), 255), 0), 1-i/canvasHeight); //sets the color of the pen as a brighter or darker sky blue,, affected by the distance from the sun. The Math.min and Math.max functions are there to limit the maximum and minumum brightness and darkness the function can be, so that penRGB doesn't make a lot of warnings.
+	    penDown(); // puts the pen down with the new color, moves forward the step size, then picks up the pen again.
+  	    moveForward(step);
 	    penUp();
-	  
+         }
   }
-  }
-  turnTo(0);
+  turnTo(0); //turns to face upwards at the end
 }
 //Draw House - Nathan Melcher
 function drawHouse(x,y){
