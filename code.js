@@ -28,7 +28,8 @@ drawSmith(houseX+34, houseY-72); //puts an image of smith in one of the windows 
 drawAllClouds(randomNumber(2,4));
 
 //BEGIN FUNCTIONS
-
+//Draws Mr. Smith's face in the window
+//Ian McKernan
 function drawSmith(x, y) {
   createCanvas("canvas1", 15, 22); //creates the canvas where the image will be put, with a size of 15x22
   setPosition("canvas1", x, y); //moves the canvas into the right spot
@@ -36,7 +37,7 @@ function drawSmith(x, y) {
 }
 
 //Background
-//Ian McKernan with a few ideas by Nathan Melcher
+//Ian McKernan with an idea by Nathan Melcher
 function drawBackground(canvasWidth, canvasHeight) {
   penUp(); //always good to start with this so that there aren't random lines everywhere
   var step = 1; //the step size that the turtle takes every time. Decrease the number (But not below 1) for more resolution, but slower drawing.
@@ -243,7 +244,8 @@ moveTo(x+18, y-55);
   turnRight();
   moveForward(2);
 }
-//ballons
+//Draws all of the Balloons in the clump of balloons.
+//Ian McKernan
 function drawAllBallons(meanX, meanY, chimneyX, chimneyY, numBallons) {
   var sdX = 40; //the standard deviation of the X values of the ballons
   var sdY = 60; //the standard deviation of the Y values of the ballons
@@ -259,6 +261,8 @@ function drawAllBallons(meanX, meanY, chimneyX, chimneyY, numBallons) {
   drawBallon(coordX, coordY, chimneyX, chimneyY, randomGaussian(4, 1), radius, meanX, meanY); // calls the drawBallon fuction with the variables it has gotten. The Radius is called so that the ballons will have a mean of 4 with a standard deviation of 1.
   }
 }
+//Draws each individual balloon
+//Ian McKernan
 function drawBallon(x, y, chimneyX, chimneyY, size, radius, meanX, meanY) {
   moveTo(chimneyX, chimneyY); //moves to the correct stating position of the chimney passed in when its called
   if(y-30 > meanY) { //this only runs the drawstring sequence if the ballon is towards the bottom of the pack of ballons
@@ -276,12 +280,18 @@ function drawBallon(x, y, chimneyX, chimneyY, size, radius, meanX, meanY) {
   dot(size);//draws the actual balloon
   penUp(); //end with this to not have random lines everywere
 }
+//Finds the distance Between 2 points
+//Ian McKernan
 function distance(pt1X, pt1Y, pt2X, pt2y) {
   return Math.sqrt(Math.pow((pt2X-pt1X),2)+Math.pow((pt2y-pt1Y), 2)); //finds the distance between two points. Derived from Pythagorean theorem
 }
+
+//Gaussian Random (Random with a set mean and standard deviation)
+//Ian McKernan
 function randomGaussian(m, sd) { //gets passed mean and standard deviation, as m and sd, respectively, and returns the Gaussian random
   return m + 2*sd*(Math.random() + Math.random() + Math.random() - 1.5); //this is an approxiamtion of the box-muller transform. It's more than good enough for the project
 }
+//Nathan Melcher
 function drawWindow(size){
   drawSquare(size);
   penRGB(0,0,0,0.5);
@@ -303,7 +313,7 @@ for (var i = 0; i < 4; i++) {
   turnRight();
   }  
 }
-//sun rays
+/*//sun rays
 function drawAllRays(){
   Ray(randomNumber(75,100));
   turnTo(randomNumber(-80, -200));
@@ -331,7 +341,7 @@ moveTo(300,20);
   penRGB(255, 201, 66, 0.2);
   dot(0.5 * size);
   penUp();
-}
+}*/
 //tree tops
 moveTo(0, 450);
 function treeTop(size){
@@ -367,7 +377,7 @@ for(var j = 0; j < 10; j++) {
   moveTo(randomNumber(0, 320), 450);
 }
 }
-//Applying all balloons
+//Applying all the random balloons
 function allBalloons() {
   for (var i = 0; i < 8; i++) {
     drawBalloons(randomNumber(2, 5));
@@ -427,8 +437,9 @@ function allBirds() {
   }
 }
 //New Sun Model
+//Ian McKernan and Jason Hermann
 function drawSun() {
-  penUp(); //should start out with penUp, but just to be safe we do it again
+  penUp(); //should need to start out with penUp, but just to be safe we do it again
   moveTo(320, 0); //moves to the upper right corner cause thats where the sun is
   penColor("yellow");// starts out with yellow
   dot(63); //makes the biggest dot
