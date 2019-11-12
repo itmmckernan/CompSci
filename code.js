@@ -379,9 +379,9 @@ for(var j = 0; j < 10; j++) {
 }
 }
 //Applying all the random balloons
-function allBalloons() {
+function allRandomBalloons() {
   for (var i = 0; i < 8; i++) {
-    drawBalloons(randomNumber(2, 5));
+    drawRandomBalloons(randomNumber(2, 5));
   }
 }
 //Model of Balloons
