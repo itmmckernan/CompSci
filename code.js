@@ -70,7 +70,6 @@ function colorPanel() {
   turnTo(90);
     //penRGB(252, 214, 124);
     penRGB(219, 96, 96);
-    
     penWidth(10);
     moveForward(24);
     turnLeft(90);
@@ -147,8 +146,6 @@ moveTo(x+18, y-55);
   turnTo(90);
   moveForward(10);
   moveBackward(18);
-  
-  
   penUp();
 //Base
   moveTo(x,y);
