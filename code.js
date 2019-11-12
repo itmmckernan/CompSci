@@ -26,7 +26,6 @@ allWind();
 allBirds();
 drawSmith(houseX+34, houseY-72); //puts an image of smith in one of the windows in the house
 drawAllClouds(randomNumber(2,4));
-
 //BEGIN FUNCTIONS
 //Draws Mr. Smith's face in the window
 //Ian McKernan
@@ -35,7 +34,6 @@ function drawSmith(x, y) {
   setPosition("canvas1", x, y); //moves the canvas into the right spot
   drawImageURL("https://github.com/itmmckernan/CompSci/blob/master/smith.png?raw=true"); //pulls the image from the github, and puts it on the canvas
 }
-
 //Background
 //Ian McKernan with an idea by Nathan Melcher
 function drawBackground(canvasWidth, canvasHeight) {
