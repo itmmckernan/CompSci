@@ -429,9 +429,7 @@ function drawSun() {
   }
   penUp(); //pulls the pen up in the end
 }
-
 //Clouds
-
 function drawCloud(size){
   penUp();
   turnTo(270);
@@ -449,7 +447,6 @@ function drawCloud(size){
   dot(size);
   penUp();
 }
-
 function drawAllClouds(cloudNum){
   for (var i = 0; i < cloudNum; i++) {
   drawCloud(randomNumber(12.5, 20));
