@@ -288,29 +288,29 @@ function drawAllBalloons(meanX, meanY, chimneyX, chimneyY, numBalloons) {
   	coordY = randomGaussian(meanY, sdY); //calls the randomGaussian function for the y value of the balloon
 	radius = distance(meanX, meanY, coordX, coordY); //finds the distance of the two generated points from the center of the balloon clump
   }
-  drawBalloon(coordX, coordY, chimneyX, chimneyY, randomGaussian(4, 1), radius, meanX, meanY); // calls the drawBalloon fuction with the variables it has gotten. The Radius is called so that the balloons will have a mean of 4 with a standard deviation of 1.
+  drawBalloon(coordX, coordY, chimneyX, chimneyY, randomGaussian(4, 1), radius, meanX, meanY); // calls the drawBalloon function with the variables it has gotten. The Radius is called so that the balloons will have a mean of 4 with a standard deviation of 1.
   }
 }
 //Draws each individual balloon
 //Ian McKernan
 function drawBalloon(x, y, chimneyX, chimneyY, size, radius, meanX, meanY) {
-  moveTo(chimneyX, chimneyY); //moves to the correct stating position of the chimney passed in when its called
+  moveTo(chimneyX, chimneyY); //moves to the correct starting position of the chimney passed in when its called
   if(y-30 > meanY) { //this only runs the drawstring sequence if the balloon is towards the bottom of the pack of balloons
   penRGB(225, 225, 225, 0.01); //sets the mostly-translucent grey color of the string
   penDown();//puts the pen down so when it moves it draws the string
   }
-  var contrast = 1.1; //the exponential value of the contrastning algorithm less than 1 is anti-shadow, more than 1 is more shadow
+  var contrast = 1.1; //the exponential value of the contrasting algorithm less than 1 is anti-shadow, more than 1 is more shadow
   moveTo(x, y); //moves to where the position of the balloon is and draws the string
   var neonColorPos = randomNumber(0, neonColors.length-1); //picks a random rgb triplet from the list so that we're able to add colors as we want and not have to change this code
-  if((x-meanX)>(y-meanY)){ // determines if the balloon is on the upper or lower side of the balloons, and picks the shading command accoridngly
-	  penRGB(Math.min(neonColors[neonColorPos][0]+Math.pow(radius, contrast), 255), Math.min(neonColors[neonColorPos][1]+Math.pow(radius, contrast), 255), Math.min(neonColors[neonColorPos][2]+Math.pow(radius, contrast), 255), size/8); //sets the pen color to what the random neon color is, adds highlight, then sees if that value is greater than 255. If it is it just returns 255 to avoid errors. This is done for each color channel of the balloon. Then the opacity of the colr is set based off the size of the balloon.
+  if((x-meanX)>(y-meanY)){ // determines if the balloon is on the upper or lower side of the balloons, and picks the shading command accordingly
+	  penRGB(Math.min(neonColors[neonColorPos][0]+Math.pow(radius, contrast), 255), Math.min(neonColors[neonColorPos][1]+Math.pow(radius, contrast), 255), Math.min(neonColors[neonColorPos][2]+Math.pow(radius, contrast), 255), size/8); //sets the pen color to what the random neon color is, adds highlight, then sees if that value is greater than 255. If it is it just returns 255 to avoid errors. This is done for each color channel of the balloon. Then the opacity of the color is set based on the size of the balloon.
   } else { // if the if statement is not true, then it runs this
 	  penRGB(Math.max(neonColors[neonColorPos][0]-Math.pow(radius, contrast), 0), Math.max(neonColors[neonColorPos][1]-Math.pow(radius, contrast), 0), Math.max(neonColors[neonColorPos][2]-Math.pow(radius, contrast), 0), size/8); //same as the line 2 lines above it, but instead of adding highlights it adds shadows
   }
   dot(size);//draws the actual balloon
-  penUp(); //end with this to not have random lines everywere
+  penUp(); //end with this to not have random lines everywhere
 }
-//Finds the distance Between 2 points
+//Finds the distance between 2 points
 //Ian McKernan
 function distance(pt1X, pt1Y, pt2X, pt2y) {
   return Math.sqrt(Math.pow((pt2X-pt1X),2)+Math.pow((pt2y-pt1Y), 2)); //finds the distance between two points. Derived from Pythagorean theorem
@@ -319,7 +319,7 @@ function distance(pt1X, pt1Y, pt2X, pt2y) {
 //Gaussian Random (Random with a set mean and standard deviation)
 //Ian McKernan
 function randomGaussian(m, sd) { //gets passed mean and standard deviation, as m and sd, respectively, and returns the Gaussian random
-  return m + 2*sd*(Math.random() + Math.random() + Math.random() - 1.5); //this is an approxiamtion of the box-muller transform. It's more than good enough for the project
+  return m + 2*sd*(Math.random() + Math.random() + Math.random() - 1.5); //this is an approximation of the box-muller transform. It's more than good enough for the project
 }
 //Nathan Melcher
 function drawWindow(size){
@@ -441,12 +441,12 @@ function allBirds() {
 //Ian McKernan and Jason Hermann
 function drawSun() {
   penUp(); //should need to start out with penUp, but just to be safe we do it again
-  moveTo(320, 0); //moves to the upper right corner cause thats where the sun is
+  moveTo(320, 0); //moves to the upper right corner because that's where the sun is
   penColor("yellow");// starts out with yellow
   dot(63); //makes the biggest dot
   for(var i = 0; i < 50; i++){ // starts drawing the outer sun first then slowly makes the inner suns
     var fadeCoeffG = 2; //how quickly the green fades away per iteration of the for loop so that it can transition into red in the middle from orange
-    penRGB(255, 180-fadeCoeffG*i, 0); //sets the pen color and tranisitions into red for the middle
+    penRGB(255, 180-fadeCoeffG*i, 0); //sets the pen color and transitions into red for the middle
     dot(50-i); //smaller dot every iteration of the for loop
   }
   turnTo(0); //points up
