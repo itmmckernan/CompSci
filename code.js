@@ -1,3 +1,4 @@
+speed(100);
 hide();
 //Variables
 var neonColors = [ //this is a list of RGB values. Each line of 3 values is Red Green and Blue, respecively
