@@ -344,11 +344,12 @@ for (var i = 0; i < 4; i++) {
   turnRight();
   }  
 }
-//tree tops
+//trees -Adam Brower
 moveTo(0, 450);
 function treeTop(size){
+//this function creates the triangles that are on the tops of the trees
   penRGB(19, randomNumber(115, 150), randomNumber(0, 50), 1);
-  penWidth(size);
+  penWidth(size); //The penWidth has to be big so the triangles are filled 
   penDown();
   turnTo(45);
   moveForward(1.5 * size);
@@ -359,6 +360,7 @@ function treeTop(size){
   penUp();
 }
 function tree(size){
+//this function creates stump of the tree 
   penRGB(161, 94, 2, 1);
   moveTo(randomNumber(0, 320), 450);
   turnTo(0);
@@ -368,12 +370,16 @@ function tree(size){
   penUp();
   turnLeft(90);
   moveForward(size);
-  treeTop(size);
+  treeTop(size); //creates tree top
 }
-function drawAllTrees() {
+function drawAllTrees() { 
+//this funciton draws all of the trees so two loops are included	
+	
+//draws all trees with stumps
 for (var i = 0; i <10; i++){
   tree(randomNumber(10, 15));
 }
+//draws all tree tops
 for(var j = 0; j < 10; j++) {
   treeTop(randomNumber(10, 15));
   moveTo(randomNumber(0, 320), 450);
@@ -463,8 +469,9 @@ function drawSun() {
   }
   penUp(); //pulls the pen up in the end
 }
-//Clouds
+//Clouds -Adam Brower
 function drawCloud(size){
+//This is the function that draws the basic cloud
   penUp();
   turnTo(270);
   moveTo(randomNumber(30, 250), randomNumber(50, 20));
@@ -481,7 +488,8 @@ function drawCloud(size){
   dot(size);
   penUp();
 }
-function drawAllClouds(cloudNum){
+function drawAllClouds(cloudNum //this parameter cloudNum is the number of clouds that are created in the loop){
+//This function contains a loop that creates multiple clouds.]
   for (var i = 0; i < cloudNum; i++) {
   drawCloud(randomNumber(12.5, 20));
   turnTo(270);
