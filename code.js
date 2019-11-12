@@ -145,6 +145,41 @@ moveTo(x+18, y-55);
   moveForward(10);
   moveBackward(18);
   penUp();
+//Door and roof color
+  moveTo(x-4, y-50);
+  penDown();
+  penRGB(194, 103, 0, 1);
+  penWidth(6);
+  turnTo(45);
+  moveForward(65);
+  turnRight(90);
+  moveForward(65);
+  penUp();
+  moveTo(x+34, y-4);
+  penDown();
+  turnTo(0);
+  for (var i = 0; i < 3; i++) {
+    doorSquiggles();
+  }
+  
+  function doorSquiggles() {
+  penRGB(194, 103, 0, 1);
+  penWidth(6);
+  penUp();
+  turnRight(90);
+  penDown();
+  moveForward(16);
+  penUp();
+  turnLeft(90);
+  moveForward(5);
+  turnLeft(90);
+  penDown();
+  moveForward(16);
+  turnRight(90);
+  penUp();
+  moveForward(5);
+  }
+  penUp();
 //Base
   moveTo(x,y);
   penDown();
